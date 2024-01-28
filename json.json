@@ -1,0 +1,51 @@
+{
+  "OPENAI_API_KEY": "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",
+  "LangChain": {
+    "OpenAIModel": {
+      "API_KEY": "OPENAI_API_KEY"
+    },
+    "Memory": {
+      "Type": "ConversationBufferMemory"
+    },
+    "ConversationChain": {
+      "LLM": "OpenAIModel",
+      "Memory": "Memory"
+    }
+  },
+  "Functions": {
+    "ExtractTextFromPDF": {
+      "Input": "file_path",
+      "Output": "text",
+      "Description": "Extracts text from a PDF file."
+    },
+    "ChunkPDFText": {
+      "Input": ["pdf_text", "max_length"],
+      "Output": "chunks",
+      "Description": "Splits PDF text into chunks."
+    },
+    "EstimateTokenCount": {
+      "Input": "text",
+      "Output": "token_count",
+      "Description": "Estimates the token count of a text."
+    },
+    "AskOpenAIWithPDFContext": {
+      "Input": ["question", "pdf_text_chunks", "conversation_chain"],
+      "Output": "response",
+      "Description": "Asks a question to OpenAI with PDF context."
+    },
+    "IsResponseAdequate": {
+      "Input": ["response", "pdf_text"],
+      "Output": "is_adequate",
+      "Description": "Checks if the response adequately addresses the question."
+    },
+    "ChatWithGPTLangChain": {
+      "Input": ["prompt", "pdf_text", "conversation_chain"],
+      "Output": "response",
+      "Description": "Chat function integrating LangChain and GPT."
+    }
+  },
+  "Main": {
+    "PDFFilePath": "/Users/blenbegashaw/PycharmProjects/pythonProject1/Scraped Articles.pdf",
+    "Loop": "Interactive user input loop for conversation."
+  }
+}
